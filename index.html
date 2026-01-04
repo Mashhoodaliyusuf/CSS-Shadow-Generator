@@ -1,1 +1,440 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Shadow CSS Generator</title>
+    <meta name="description" content="
+    Want to generate awesome text shadows with odern designs? This tool provide you solution for Text Shadow CSS Generation. Use lots of customization like horizontal offset
+, vertical offset, blur radius, shadow color for shadow and generate the CSS code your your desired text shadows.
+    ">
+    <link rel="canonical" href="https://css-generator.pythonware.com/text-shadow-css-generator"/>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; background:#f9f9fb; line-height:1.5; }
+
+ #header{
+    width:100%;
+    height:60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:fixed;top:0;
+    z-index:9999;
+    border-bottom:1px solid #d9d9d9;
+  }
+  #header h1{
+    font-size:16px; 
+    font-family:arial;
+    font-weight:lighter;
+    color:white
+  }
+  #header img{width:170px;margin-left:50px}
+  #header p{font-family:arial;margin-right:50px}
+  #header p a{margin-left:40px;text-decoration:none;color:#262626;font-family:helvetica}
+  #header button{background-color:#262626;color:white;padding:9px 18px;border-radius:9px;cursor:pointer;border:none;font-family:helvetica}
+  #header button:hover{background-color:#404040;color:#f2f2f2;border:none}  
+  
+
+#main{
+    width:90%;
+    min-height:calc(100vh - 50px);
+    max-height:auto;
+    overflow-y: auto;
+    margin:80px auto;
+    border-radius:10px;
+    position:relative;
+
+  }
+
+        #leftbar, #rightbar {padding: 28px;min-height: 520px;}
+        #leftbar {width: 50%;float: left;background:#ccffe6;}
+        #rightbar {width: 50%;float: right;background: #f2f2f2;text-align: center;}
+
+        .control {margin-bottom: 26px;}
+        .control label {display: block;margin-bottom: 7px;font-weight: bold;color: #333;}
+        input[type="range"] {width: 100%;height: 8px;border-radius: 5px;background: #ddd;outline: none;}
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;width: 20px;height: 20px;border-radius: 50%;background: #5c7cd6;cursor: pointer;
+        }
+        input[type="color"] {width: 100%;height: 45px;border: none;border-radius: 6px;cursor: pointer;}
+        input[type="number"] {width: 70px;padding: 6px;margin-top: 6px;border: 1px solid #ccc;border-radius: 4px;}
+
+        #preview-text {
+            font-size: 72px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 60px auto;
+            text-align: center;
+            transition: text-shadow 0.25s ease;
+        }
+
+        #css-code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            text-align: left;
+            margin: 20px auto;
+            width: 90%;
+            min-height: 100px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .copy-btn {
+            background: #5c7cd6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+        .copy-btn:hover { background:#476abf; }
+
+        #infocon{width:750px;margin:50px auto;padding:20px;}
+        #infocon p, #footer li{font-family: arial;font-size:16px;line-height: 25px;margin:10px;}
+        #infocon h2, #footer h3{font-family: arial;font-size:21px;line-height: 25px;margin:10px;}
+        #infocon textarea{margin:20px}
+
+        
+        
+ /* Footer */
+        footer {
+            background-color:#1A1A2E;
+            color: white;
+            padding: 70px 20px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-about p {
+            opacity: 0.7;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            margin-left:0px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+  
+ @media (min-width: 200px) and (max-width: 800px) {
+ #header p{display:none}  
+    #main{
+      width:95%;
+      min-height:auto;
+      overflow-y: auto;
+      margin:10px auto;
+      border-radius:10px;
+      background-color:#f1f5f9;
+      opacity:1;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+  #header{
+    width:100%;
+    height:50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position:fixed;top:0;
+    z-index:9999;
+    border-bottom:1px solid #d9d9d9;
+  }
+  #header h1{
+    font-size:16px; 
+    font-family:arial;
+    font-weight:lighter;
+    color:white
+  }
+  #header img{width:110px;margin-left:10px}
+
+  #main{
+    width:100%;
+    height:auto;
+    margin:70px auto;
+    border-radius:10px;
+    position:relative
+    background-color: red;
+  }
+ .top{width:100%;display:table;margin:100px auto;background-color:white;padding:50px 0;background: linear-gradient(to right, #e74e8f, #f8644a); }
+  .topleft{width:95%;height:300px;float:none;margin-left:0px;text-align:center;margin:auto;}
+  .topleft h2{color:#737373;font-size:38px;font-family: Poppins, sans-serif;color:white;}
+  .topleft h3{color:#3399ff;color:#00b386;font-size:35px;font-family:cursive;font-style:italic;margin-top:-20px}
+  .topright{width:95%;height:auto;float:none;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;border-radius:20px;overflow:hidden;margin-right:0px;margin:auto;}
+
+
+ 
+        #infocon{width:95%;margin:50px auto;padding:10px;}
+        #infocon p, #footer li{font-family: arial;font-size:16px;line-height: 25px;margin:10px;}
+        #infocon h2, #footer h3{font-family: arial;font-size:21px;line-height: 25px;margin:10px;}
+        #infocon textarea{margin:20px}
+ 
+    
+    
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .step:not(:last-child)::after {
+                display: none;
+            }    
+  } 
+            #leftbar, #rightbar {width: 100% !important;float: none;}
+            #rightbar { background:#fffbe6; }    
+}        
+        
+    </style>
+</head>
+<body>
+
+
+
+<div id="header">
+
+<a href="https://css-generator.pythonware.com/"><img src="https://www.pythonware.com/image-converter/pythonware.png" style="height:80%" alt="pythonware logo" /></a>
+<p>
+<a href="https://css-generator.pythonware.com/box-shadow-css-generator">CSS Box Shadow</a>
+<a href="https://css-generator.pythonware.com/drop-shadow-css-generator">CSS Drop Shadow</a>
+<a href="https://css-generator.pythonware.com/css-gradient-generator">CSS Gradient</a>
+<a href="https://css-generator.pythonware.com/css-grid-generator">CSS Grid</a>
+</p>
+
+</div>  
+
+
+
+    <div id="main">
+
+
+        <div id="leftbar">
+            <div class="control">
+                <label>Horizontal Offset</label>
+                <input type="range" id="hoff" min="-50" max="50" value="4">
+                <input type="number" id="hoff-val" value="4"> px
+            </div>
+
+            <div class="control">
+                <label>Vertical Offset</label>
+                <input type="range" id="voff" min="-50" max="50" value="4">
+                <input type="number" id="voff-val" value="4"> px
+            </div>
+
+            <div class="control">
+                <label>Blur Radius</label>
+                <input type="range" id="blur" min="0" max="100" value="8">
+                <input type="number" id="blur-val" value="8"> px
+            </div>
+
+            <div class="control">
+                <label>Shadow Color</label>
+                <input type="color" id="color" value="#000000">
+            </div>
+        </div>
+
+        <div id="rightbar">
+            <h2 style="margin-bottom:20px; color:#333;">Live Preview</h2>
+            <div id="preview-text">Text Shadow</div>
+
+            <h3 style="margin:30px 0 10px; color:#333;">Your CSS Code</h3>
+            <pre id="css-code">text-shadow: 4px 4px 8px rgba(0,0,0,0.5);</pre>
+            <button class="copy-btn" onclick="copyCode()">Copy CSS</button>
+            <p style="margin-top:15px; font-size:13px; color:#666;">Click the box above to select all</p>
+        </div>
+    </div>
+
+<script>
+    const preview = document.getElementById('preview-text');
+    const output = document.getElementById('css-code');
+
+    const h = document.getElementById('hoff');
+    const v = document.getElementById('voff');
+    const b = document.getElementById('blur');
+    const c = document.getElementById('color');
+
+    function linkSliderAndInput(sliderId, inputId) {
+        const slider = document.getElementById(sliderId);
+        const input = document.getElementById(inputId);
+        slider.oninput = () => { input.value = slider.value; update(); }
+        input.oninput = () => { slider.value = input.value; update(); }
+    }
+    linkSliderAndInput('hoff', 'hoff-val');
+    linkSliderAndInput('voff', 'voff-val');
+    linkSliderAndInput('blur', 'blur-val');
+
+    function update() {
+        const color = c.value;
+        let r = parseInt(color.substr(1,2), 16);
+        let g = parseInt(color.substr(3,2), 16);
+        let bl = parseInt(color.substr(5,2), 16);
+        const rgba = `rgba(${r}, ${g}, ${bl}, 0.5)`;
+
+        const shadow = `${h.value}px ${v.value}px ${b.value}px ${rgba}`;
+
+        preview.style.textShadow = shadow;
+
+        output.textContent = 
+`text-shadow: ${shadow};
+-webkit-text-shadow: ${shadow};
+-moz-text-shadow: ${shadow};`;
+    }
+
+    function copyCode() {
+        navigator.clipboard.writeText(output.textContent).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.textContent = "Copied!";
+            setTimeout(() => btn.textContent = "Copy CSS", 1800);
+        });
+    }
+
+    document.querySelectorAll('input').forEach(el => {
+        el.addEventListener('input', update);
+    });
+
+    update();
+</script>
+
+<div id="infocon">
+    <h3>Similar Tools</h3> 
+    <p><a href="box-shadow-css-generator">Box Shadow CSS Generator</a></p> 
+    <p><a href="drop-shadow-css-generator">Drop Shadow CSS Generator</a></p>
+     <p><a href="css-gradient-generator">CSS Gradient Generator</a></p>  
+      <p><a href="css-grid-generator">CSS Grid Generator</a></p> 
+
+    <br>
+    <p>We have designed this text shadow css generation tool keeping in mind that user like you want a simple user-interface but still having all the modern features.
+    Just select some settings and customise the shadow of text and copy your css.
+    </p>
+    <h2>What is Text Shadow?</h2>
+   <p>
+Text shadow is one of those little known CSS tricks that can make your words pop off the page. Every object cast shadows, then why not text.
+Basically, it adds a blurred or solid shadow behind your text like the drop shadows you see on old movie posters or album covers.
+   </p>
+<p>
+ People overuse it sometimes and end up with that early 2010s "everything must glow" look, but when you keep it subtle, it is honestly a game-changer
+for readability and style.   
+</p>   
+    
+    <br>
+    <h2>Common Text Shadow Effects</h2>
+    <p>
+    Here are some of the different types of text shadow effect:
+    <li><b>Soft subtle drop</b> : The everyday hero. Something like text-shadow: 1px 1px 2px rgba(0,0,0,0.4);. It just lifts the text off the 
+        background a tiny bit so it doesn't get lost, especially on photos or noisy patterns. Every portfolio and SaaS landing page 
+        from the last decade owes this one a beer.</li>  
+    <li><b>Hard crisp shadow</b> : Think retro posters or brutalist vibes: text-shadow: 4px 4px 0 #000;. No blur, pure offset. Looks bold and 
+        confident, works great with chunky sans-serifs and bright backgrounds.</li> 
+    <li><b>Multiple shadows (the glow + drop combo)</b> : Stack a tight shadow for crispness and a bigger blurred one for 
+        glow: text-shadow: 0 0 10px #fff, 0 0 20px #fff, 2px 2px 4px rgba(0,0,0,0.6);. Instant neon sign or cyberpunk headline.</li>         
+    </p>
+    <br>
+<textarea style="font-family:arial;font-size:13px;width:90%;min-height:60px;background-color:#1e1e1e;color:white;padding:10px;border-radius:10px">
+filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.3));
+-webkit-filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.3));
+  </textarea>    
+<h2>How to use this to generate text shadow css</h2>
+<p>
+ We have tried to make this tool super easy to use but have lots of customization features for your generated text. In the left side bar,
+ you will find slicer to select the types of shdow you want, blur radius that allows how blur you want shadow to be, color you want your
+shadow to be etc. and you will see the live changes in the right side bar. Copy the generated code and it is ready to go.
+</p>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-crop-alt"></i>Pythonware
+                    </div>
+                    <p>Advanced css generation tool for coders and professionals. Generate your css requirement from here for free.</p>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="https://github.com/Mashhoodaliyusuf/picture-cropper" target="_blank" style="color: white; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/real-mashhood-ali/" target="_blank" style="color: white; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+<li><a href="https://css-generator.pythonware.com/box-shadow-css-generator">CSS Box Shadow</a></li>
+<li><a href="https://css-generator.pythonware.com/drop-shadow-css-generator">CSS Drop Shadow</a></li>
+<li><a href="https://css-generator.pythonware.com/css-gradient-generator">CSS Gradient</a></li>
+<li><a href="https://css-generator.pythonware.com/css-grid-generator">CSS Grid</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="https://www.pythonware.com/privacy.html">Privacy Policy</a></li>
+              
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pythonware All rights reserved.</p>
+            </div>
+        </div>
+    </footer>  
+
+
+</body>
+</html>
